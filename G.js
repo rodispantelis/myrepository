@@ -11,9 +11,7 @@ var wms = m.initMap(WebGLEarth.Maps.WMS, [la, ur,
 */
 
 
-var wms = new WE.tileLayerWMS(ur, {
-    layers: la
-}).addTo(m);
+var wms = new WE.tileLayerWMS(ur, la);
 
 
 
