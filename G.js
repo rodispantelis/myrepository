@@ -4,11 +4,19 @@ var formatp = 'image/png'; var anti='none';
 
 
 var m = new WE.map('map');
+/*
 var wms = m.initMap(WebGLEarth.Maps.WMS, [la, ur, 
                                                   '1.3.0', la, wmsprj, formatp, '', 
                                                   '', 1, 15]);
+*/
 
-//m.setPosition(wmscenterx,wmscentery,wmszoom);
+var wms = WE.tileLayer.wms(ur, {
+    layers: la
+}).addTo(m);
+
+
+
+m.setPosition(wmscenterx,wmscentery,wmszoom);
 
 function initmap(){
     
