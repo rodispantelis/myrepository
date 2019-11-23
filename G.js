@@ -19,8 +19,5 @@ m.setPosition(wmscenterx,wmscentery,wmszoom);
 
 
 m.setBaseMap(wms);
-//m.addLayer(wms);
-//m.setCenter(new OpenLayers.LonLat(23.630000, 38.202100), 5);
-//if(zoomcnt || zoomcnt2){arr();}
-//var queryableMapLayers = [L];
+
 initmap();
