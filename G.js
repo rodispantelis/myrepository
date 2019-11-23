@@ -10,10 +10,7 @@ var wms = m.initMap(WebGLEarth.Maps.WMS, [la, ur,
                                                   '', 1, 15]);
 */
 
-
 var wms = new WE.tileLayerWMS(ur, la);
-
-
 
 m.setPosition(wmscenterx,wmscentery,wmszoom);
 
