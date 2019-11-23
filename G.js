@@ -4,21 +4,19 @@ var formatp = 'image/png'; var anti='none';
 
 
 var m = new WE.map('map');
-/*
+
 var wms = m.initMap(WebGLEarth.Maps.WMS, [la, ur, 
-                                                  '', la, wmsprj, '', '', 
+                                                  '', la, '', '', '', 
                                                   '', 1, 15]);
-*/
-
-var wms = new WE.tileLayer.wms(ur, {layers: la});//.addTo(map);
 
 
+//var wms = new WE.tileLayer.wms(ur, {layers: la});//.addTo(map);
 
-m.setPosition(wmscenterx,wmscentery,wmszoom);
 
-function initmap(){
-    
-}
+
+//m.setPosition(wmscenterx,wmscentery,wmszoom);
+
+
 
 m.setBaseMap(wms);
 //m.addLayer(wms);
