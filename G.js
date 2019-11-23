@@ -10,7 +10,6 @@ var wms = m.initMap(WebGLEarth.Maps.WMS, [la, ur,
                                                   '', 1, 15]);
 */
 
-
 var wms = WE.tileLayer.wms(ur, {layers: la}).addTo(map);
 
 
