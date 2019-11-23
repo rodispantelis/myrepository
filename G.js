@@ -1,0 +1,22 @@
+	//Copyright Panteleimon Rodis 2015-2019 
+var WURL='nopoint.png';var L;var lastprj="EPSG:4326";
+var formatp = 'image/png'; var anti='none';
+
+
+var m = new WE.map('map');
+var wms = m.initMap(WebGLEarth.Maps.WMS, [la, ur, 
+                                                  '1.3.0', la, wmsprj, formatp, '', 
+                                                  '', 1, 15]);
+
+m.setPosition(wmscentery,wmscenterx,wmszoom);
+
+function initmap(){
+    
+}
+
+m.setBaseMap(wms);
+//m.addLayer(wms);
+//m.setCenter(new OpenLayers.LonLat(23.630000, 38.202100), 5);
+//if(zoomcnt || zoomcnt2){arr();}
+//var queryableMapLayers = [L];
+initmap();
