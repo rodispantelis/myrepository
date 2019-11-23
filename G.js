@@ -4,16 +4,16 @@ var formatp = 'image/png'; var anti='none';
 
 
 var m = new WE.map('map');
-
+/*
 var wms = m.initMap(WebGLEarth.Maps.WMS, [la, ur, 
                                                   '', la, wmsprj, '', '', 
                                                   '', 1, 15]);
+*/
 
-/*
-var wms = WE.tileLayer.wms(ur, {
+var wms = WE.tileLayerWMS(ur, {
     layers: la
 }).addTo(m);
-*/
+
 
 
 m.setPosition(wmscenterx,wmscentery,wmszoom);
