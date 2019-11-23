@@ -6,7 +6,7 @@ var formatp = 'image/png'; var anti='none';
 var m = new WE.map('map');
 
 var wms = m.initMap(WebGLEarth.Maps.WMS, [la, ur, 
-                                                  '1.3.0', la, wmsprj, formatp, '', 
+                                                  '', la, wmsprj, '', '', 
                                                   '', 1, 15]);
 
 /*
