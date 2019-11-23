@@ -8,7 +8,7 @@ var wms = m.initMap(WebGLEarth.Maps.WMS, [la, ur,
                                                   '1.3.0', la, wmsprj, formatp, '', 
                                                   '', 1, 15]);
 
-m.setPosition(wmscentery,wmscenterx,wmszoom);
+//m.setPosition(wmscenterx,wmscentery,wmszoom);
 
 function initmap(){
     
