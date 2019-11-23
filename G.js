@@ -11,7 +11,9 @@ var wms = m.initMap(WebGLEarth.Maps.WMS, [la, ur,
 */
 
 
-var wms = new WE.tileLayer.wms(ur, la);
+var wms = WE.tileLayer.wms(ur, {layers: la}).addTo(map);
+
+
 
 m.setPosition(wmscenterx,wmscentery,wmszoom);
 
@@ -19,7 +21,7 @@ function initmap(){
     
 }
 
-m.setBaseMap(wms);
+//m.setBaseMap(wms);
 //m.addLayer(wms);
 //m.setCenter(new OpenLayers.LonLat(23.630000, 38.202100), 5);
 //if(zoomcnt || zoomcnt2){arr();}
