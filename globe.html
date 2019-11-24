@@ -163,12 +163,13 @@ body {background-color:white;
 	</div>
 
 <script src="webglearth/api.js" type="text/javascript" crossorigin="anonymous"></script>
+                
 <script crossorigin="anonymous">
-var options={atmosphere:true,sky:true};
+var options={atmosphere:true,sky:true, crossOrigin : "anonymous"};
 var m = new WE.map('map',options);
 var wms = m.initMap(WebGLEarth.Maps.WMS, [la, ur, '', la, '', '', '', '', 1, 15]);
 m.setPosition(wmscentery,wmscenterx,wmszoom);                                              
-m.setBaseMap(wms); 
+m.setBaseMap(wms);                                             
 </script>
                 
 
