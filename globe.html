@@ -169,7 +169,13 @@ var options={atmosphere:true,sky:true, crossOrigin : "anonymous"};
 var m = new WE.map('map',options);
 var wms = m.initMap(WebGLEarth.Maps.WMS, [la, ur, '', la, '', '', '', '', 1, 15]);
 m.setPosition(wmscentery,wmscenterx,wmszoom);                                              
-m.setBaseMap(wms);                                             
+m.setBaseMap(wms);    
+	
+	var toner = WE.tileLayer('http://tile.stamen.com/toner/{z}/{x}/{y}.png', {
+          attribution: 'Map tiles by Stamen Design, under CC BY 3.0. Data by OpenStreetMap, under CC BY SA.',
+          opacity: 0.6
+        });
+        toner.addTo(m);
 </script>
                 
 
