@@ -165,27 +165,11 @@ body {background-color:white;
 <script src="webglearth/api.js" type="text/javascript" crossorigin="anonymous"></script>
                 
 <script crossorigin="anonymous">
-	    ur=(function() {
-    var cors_api_host = 'cors-anywhere.herokuapp.com';
-    var cors_api_url = 'https://' + cors_api_host + '/';
-    var slice = [].slice;
-    var origin = window.location.protocol + '//' + window.location.host;
-    var open = XMLHttpRequest.prototype.open;
-    XMLHttpRequest.prototype.open = function() {
-        var args = slice.call(arguments);
-        var targetOrigin = /^https?:\/\/([^\/]+)/i.exec(args[1]);
-        if (targetOrigin && targetOrigin[0].toLowerCase() !== origin &&
-            targetOrigin[1] !== cors_api_host) {
-            args[1] = cors_api_url + args[1];
-        }
-        return open.apply(this, args);
-    };
-})();
-var options={atmosphere:true,sky:true, crossOrigin : "anonymous"};
+var options={atmosphere:true,sky:true};
 var m = new WE.map('map',options);
 var wms = m.initMap(WebGLEarth.Maps.WMS, [la, ur, '', la, '', '', '', '', 1, 15]);
 m.setPosition(wmscentery,wmscenterx,wmszoom);                                              
-m.setBaseMap(wms);    
+m.setBaseMap(wms);                                             
 </script>
                 
 
