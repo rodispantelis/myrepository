@@ -162,17 +162,14 @@ body {background-color:white;
 
 	</div>
 
-		<script src="webglearth/api.js" type="text/javascript"></script>
-		<script>
-	
-	var options={atmosphere:true,sky:true};
+<script src="webglearth/api.js" type="text/javascript"></script>
+<script crossorigin="anonymous">
+var options={atmosphere:true,sky:true};
 var m = new WE.map('map',options);
 var wms = m.initMap(WebGLEarth.Maps.WMS, [la, ur, '', la, '', '', '', '', 1, 15]);
 m.setPosition(wmscentery,wmscenterx,wmszoom);                                              
 m.setBaseMap(wms); 
-	
-	
-	</script>
+</script>
                 
 
 </body>
