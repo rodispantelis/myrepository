@@ -171,7 +171,7 @@ var m = new WE.map('map',options);
 var wms = m.initMap(WebGLEarth.Maps.WMS, [la, ur, '', la, 'EPSG:4326', '', '', '', 1, 15]);
 	wms.setOpacity(1);
 	var coast= m.initMap(WebGLEarth.Maps.WMS, ['osm', 'https://ows.terrestris.de/osm/service?', '', 'OSM-Overlay-WMS', 'EPSG:4326', '', '', '', 1, 15]);
-coast.setOpacity(0);
+coast.setOpacity(1);
 	m.setPosition(wmscentery,wmscenterx,wmszoom);                                              
 m.setBaseMap(wms);
 m.setOverlayMap(coast);
