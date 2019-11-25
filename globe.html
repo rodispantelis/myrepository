@@ -169,8 +169,10 @@ var ur1='https://cors-anywhere.herokuapp.com/'+ur;
 var options={atmosphere:true,sky:true};
 var m = new WE.map('map',options);
 var wms = m.initMap(WebGLEarth.Maps.WMS, [la, ur, '', la, 'EPSG:4326', '', '', '', 1, 15]);
+	wms.setOpacity(1);
 	var coast= m.initMap(WebGLEarth.Maps.WMS, ['osm', 'https://ows.terrestris.de/osm/service?', '', 'OSM-Overlay-WMS', 'EPSG:4326', '', '', '', 1, 15]);
-m.setPosition(wmscentery,wmscenterx,wmszoom);                                              
+coast.setOpacity(0);
+	m.setPosition(wmscentery,wmscenterx,wmszoom);                                              
 m.setBaseMap(wms);
 m.setOverlayMap(coast);
 </script>
