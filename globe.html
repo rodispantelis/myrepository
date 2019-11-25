@@ -156,7 +156,7 @@ var provider = new Cesium.WebMapServiceImageryProvider({
     layers : '0',
     proxy: new Cesium.DefaultProxy('/proxy/')
 });
-
+var viewer = new Cesium.Viewer('map', {});
 viewer.imageryLayers.addImageryProvider(provider);                                            
 </script>
 </body>
