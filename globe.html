@@ -168,7 +168,7 @@ body {background-color:white;
 var ur1='https://cors-anywhere.herokuapp.com/'+ur;
 var options={atmosphere:true,sky:true};
 var m = new WE.map('map',options);
-var wms = m.initMap(WebGLEarth.Maps.WMS, [la, ur1, '', la, '', '', '', '', 1, 15]);
+var wms = m.initMap(WebGLEarth.Maps.WMS, [la, ur, '', la, 'EPSG:3857', '', '', '', 1, 15]);
 m.setPosition(wmscentery,wmscenterx,wmszoom);                                              
 m.setBaseMap(wms);                                             
 </script>
