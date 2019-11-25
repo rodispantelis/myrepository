@@ -47,9 +47,6 @@ select::-ms-expand {
     color:blue;
     z-index: 1000;
 }
-#map{
-	background-color: #000;
-}
 body {background-color:white;
 	color:lightblue;
 }
@@ -69,19 +66,10 @@ body {background-color:white;
 		<script>var custom=true;var wmsprj;var zoomcnt=false;var zoomcnt2=false;var mob=false;</script>
 
 	</div>
-	<select id="selp" style="background-color:lightblue;border-radius: 4px;" onchange="sf()">
-			<option selected value="wms">WMS</option>
-			<option value="arest">ArcGIS Rest</option>
-	</select>
-	<form id="form1" action="#" onsubmit="return false;" style="margin: 0; padding: 0;">
-		<input type="text" style="width:0px; height:0px;" id= "wurl" name="wurl">
-		<input type="text" name="layer" id="layer" style="width:0px; height:0px;">
-
-	</form>
         <div id="credits"></div>
-	<script>
+<script>
 	
-		function getUrlVars() {
+function getUrlVars() {
 			var u=window.location.href;
 				u=u.replace(/%3A/g, ":");
 				u=u.replace(/%2F/g, "/");
@@ -112,8 +100,7 @@ body {background-color:white;
                     wmsprj=getUrlVars()["wmsprj"];
                 }
                 if(getUrlVars()["p"] != 'undefined' && getUrlVars()["p"]!=null){
-                    prot=getUrlVars()["p"];
-                    selp.value=getUrlVars()["p"];}
+                    prot=getUrlVars()["p"];}
                 else{
                     prot=getUrlVars()["wms"];
                 }
@@ -147,10 +134,8 @@ body {background-color:white;
                 else{
                     wmszoom=getUrlVars()["wmszoom"];
                 }
-		document.getElementById("wurl").value=ur;
-		document.getElementById("layer").value=la;
-		                
-		function fullver(){
+                
+function fullver(){
                 if(screen.width>800){
 		var refurl='https://wms-viewer-online.appspot.com/custom3.html?&wmsurl=https://ows.terrestris.de/osm/service?&wmslayer=OSM-WMS&wmsborder=none&wmsside=Build&wmscenterx=23.63&wmscentery=38.2021&wmszoom=5&wmsprj=EPSG:4326';
 		}else{
@@ -162,18 +147,19 @@ body {background-color:white;
 
 	</div>
 
-<script src="webglearth/api.js" type="text/javascript" crossorigin="anonymous"></script>
+<script src="cesium/cesium.js" type="text/javascript" crossorigin="anonymous"></script>
                 
-<script crossorigin="anonymous">
-var options={atmosphere:true,sky:true};
-var m = new WE.map('map',options);
-var wms = m.initMap(WebGLEarth.Maps.WMS, [la, ur, '', la, '', '', '', '', 1, 15]);
-var over = m.initMap(WebGLEarth.Maps.WMS, ['OSM-Overlay-WMS', 'https://ows.terrestris.de/osm/service?', '', 'OSM-Overlay-WMS', '', '', '', '', 1, 15]);
-m.setPosition(wmscentery,wmscenterx,wmszoom);                                              
-m.setBaseMap(wms);
-m.setOverlayMap(over);
-</script>
-                
+<script>
+var widget = new Cesium.CesiumWidget('map');
+var url=ur; //Geoserver URL
+var layers = widget.scene.globe.imageryLayers;
+    layers.removeAll();
+    layers.addImageryProvider(new Cesium.WebMapServiceImageryProvider({
+        url : url,        
+        layers: la
+    }));
 
+Sandcastle.finishedLoading();                                             
+</script>
 </body>
 </html>
