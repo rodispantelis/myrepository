@@ -1,162 +1,49 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
-<meta charset="UTF-8">
-<!--<Copyright Panteleimon Rodis>-->
-	<Style>
+  <title>Hello World!</title>
 
-#form1,#form21,#maps{
-	position: absolute;
-        bottom: 0%;
-	width:100%;
-	font-style: italic;
-	color:blue;
-}
-select {
-    width: 0px;
-    display: none;
-}
-select::-ms-expand {
-	width: 0px;
-    display: none;
-}
-#selp{
-	posotion:absolute;
-	left:0%;
-	top:0%;
-}
-#logo{
-        position: absolute;
-	cursor: pointer;
-	bottom:0%;
-	right:0%;
-	z-index: 1000;
-	font-style: italic;
-	color:grey;
-	height: 38px;
-	width: 38px;
-        border-color: #888888;
-        box-shadow: 4px 4px 4px #888888 inset;
-}
-#credits{
-    margin: 0; 
-    padding: 0;
-    position:absolute;
-    bottom:2px;
-    left:1px;
-    color:blue;
-    z-index: 1000;
-}
-body {background-color:white;
-	color:lightblue;
-}
-.olImageLoadError {
-    display: none !important;
-}
-	</Style>
-  <title>Globe</title> 
-	 <link href="Widgets/widgets.css" rel="stylesheet">
-	<script src="cesium/cesium.js" type="text/javascript"></script>
+  <style>
+  #cesiumContainer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      overflow: hidden;
+      padding: 0;
+      font-family: sans-serif;
+  }
+
+  body {
+      padding: 0;
+      margin: 0;
+      overflow: hidden;
+  }
+
+
+</style>
+<script 
+
+src="https://cesium.com/downloads/cesiumjs/releases/1.63.1/Build/Cesium/Cesium.js"></script>
+<link href="https://cesium.com/downloads/cesiumjs/releases/1.63.1/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
 </head>
-<body style="margin: 0; padding: 0">
+<body>
+  <div id="cesiumContainer"></div>
+  <script>
 
-	<input id="logo" type="button" style="background:url(ims/logo-smaller.png)" onclick="fullver()"/>
-	<div id="frame" style="width:100%;">	
-	
-	<div style="width:100%; height:100%;margin: 0; padding: 0" id="map">
-		<script>var custom=true;var wmsprj;var zoomcnt=false;var zoomcnt2=false;var mob=false;</script>
+var widget = new Cesium.CesiumWidget('cesiumContainer');
+var url='https://ows.mundialis.de/services/service?'; //Geoserver URL
+var layers = widget.scene.globe.imageryLayers;
+    layers.removeAll();
+    layers.addImageryProvider(new Cesium.WebMapServiceImageryProvider({
+        url : url,        
+        layers: 'TOPO-WMS'// Here just give layer name
+    }));
 
-	</div>
-        <div id="credits"></div>
-<script>
-	
-function getUrlVars() {
-			var u=window.location.href;
-				u=u.replace(/%3A/g, ":");
-				u=u.replace(/%2F/g, "/");
-				u=u.replace(/%3F/g, "?");
-			var vars = {};
-			var parts = u.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
-				vars[key] = value;
-			});
-			return vars;
-		}
-		var ur;
-                if(getUrlVars()["u"] != 'undefined' && getUrlVars()["u"]!=null){
-                    ur=getUrlVars()["u"];}
-                else{
-                    ur=getUrlVars()["wmsurl"];
-                }
-		var la;
-                if(getUrlVars()["l"] != 'undefined' && getUrlVars()["l"]!=null){
-                    la=getUrlVars()["l"];}
-                else{
-                    la=getUrlVars()["wmslayer"];
-                }
-                    la= decodeURIComponent(la);
-                var wmsprj;
-                if(getUrlVars()["j"] != 'undefined' && getUrlVars()["j"]!=null){
-                    wmsprj=getUrlVars()["j"];}
-                else{
-                    wmsprj=getUrlVars()["wmsprj"];
-                }
-                if(getUrlVars()["p"] != 'undefined' && getUrlVars()["p"]!=null){
-                    prot=getUrlVars()["p"];}
-                else{
-                    prot=getUrlVars()["wms"];
-                }
-                var t;
-                if(getUrlVars()["s"] != 'undefined' && getUrlVars()["s"]!=null){
-                    t=getUrlVars()["s"];}
-                else{
-                    t=getUrlVars()["wmsside"];
-                }
-                var b;
-                if(getUrlVars()["b"] != 'undefined' && getUrlVars()["b"]!=null){
-                    b=getUrlVars()["b"];}
-                else{
-                    b=getUrlVars()["wmsborder"];
-                }
-                var wmscenterx;
-                if(getUrlVars()["x"] != 'undefined' && getUrlVars()["x"]!=null){
-                    wmscenterx=getUrlVars()["x"];}
-                else{
-                    wmscenterx=getUrlVars()["wmscenterx"];
-                }
-                var wmscentery;
-                if(getUrlVars()["y"] != 'undefined' && getUrlVars()["y"]!=null){
-                    wmscentery=getUrlVars()["y"];}
-                else{
-                    wmscentery=getUrlVars()["wmscentery"];
-                }
-                var wmszoom;
-                if(getUrlVars()["z"] != 'undefined' && getUrlVars()["z"]!=null){
-                    wmszoom=getUrlVars()["z"];}
-                else{
-                    wmszoom=getUrlVars()["wmszoom"];
-                }
-                
-function fullver(){
-                if(screen.width>800){
-		var refurl='https://wms-viewer-online.appspot.com/custom3.html?&wmsurl=https://ows.terrestris.de/osm/service?&wmslayer=OSM-WMS&wmsborder=none&wmsside=Build&wmscenterx=23.63&wmscentery=38.2021&wmszoom=5&wmsprj=EPSG:4326';
-		}else{
-		var refurl='https://wms-viewer-online.appspot.com/custommb.html?&wmsurl=https://ows.terrestris.de/osm/service?&wmslayer=OSM-WMS&wmsborder=none&wmsside=Build&wmscenterx=23.63&wmscentery=38.2021&wmszoom=5&wmsprj=EPSG:4326';
-		}
-		window.open(refurl,'_blank');
-		}           
-	</script>
+Sandcastle.finishedLoading();
 
-	</div>
-
-
-                
-<script>
-var provider = new Cesium.WebMapServiceImageryProvider({
-    url : ur,
-    layers : la
-});
-var viewer = new Cesium.Viewer('map', {});
-viewer.imageryLayers.addImageryProvider(provider);                                            
-</script>
+  </script>
 </body>
 </html>
