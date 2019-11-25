@@ -165,16 +165,13 @@ body {background-color:white;
 <script src="webglearth/api.js" type="text/javascript" crossorigin="anonymous"></script>
                 
 <script crossorigin="anonymous">
-var ur1='https://cors-anywhere.herokuapp.com/'+ur;
 var options={atmosphere:true,sky:true};
 var m = new WE.map('map',options);
-var wms = WebGLEarth.Maps.WMS(ur, {'', la, 'EPSG:4326', '', '', '', 1, 15}).addTo(m);
-	//wms.setOpacity(1);
-var coast= WebGLEarth.Maps.WMS('https://ows.terrestris.de/osm/service?', {'', 'OSM-Overlay-WMS', 'EPSG:4326', '', '', '', 1, 15}).addTo(m);
-//coast.setOpacity(1);
-	m.setPosition(wmscentery,wmscenterx,wmszoom);                                              
+var wms = m.initMap(WebGLEarth.Maps.WMS, [la, ur, '', la, '', '', '', '', 1, 15]);
+var over = m.initMap(WebGLEarth.Maps.WMS, ['OSM-Overlay-WMS', 'https://ows.terrestris.de/osm/service?', '', 'OSM-Overlay-WMS', '', '', '', '', 1, 15]);
+m.setPosition(wmscentery,wmscenterx,wmszoom);                                              
 m.setBaseMap(wms);
-m.setOverlayMap(coast);
+m.setOverlayMap(over);
 </script>
                 
 
