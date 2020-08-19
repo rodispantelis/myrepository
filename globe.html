@@ -34,12 +34,12 @@ src="https://cesium.com/downloads/cesiumjs/releases/1.63.1/Build/Cesium/Cesium.j
   <script>
 
 var widget = new Cesium.CesiumWidget('cesiumContainer');
-var url='https://ows.mundialis.de/services/service?'; //Geoserver URL
+var url='http://default-environment.c5san2sqhm.us-east-2.elasticbeanstalk.com:80/countries/wms?'; //Geoserver URL
 var layers = widget.scene.globe.imageryLayers;
     layers.removeAll();
     layers.addImageryProvider(new Cesium.WebMapServiceImageryProvider({
         url : url,        
-        layers: 'TOPO-WMS'// Here just give layer name
+        layers: 'countries:country_borders_labels'// Here just give layer name
     }));
 
 Sandcastle.finishedLoading();
